@@ -13,11 +13,14 @@ public class FpsController : MonoBehaviour
     [SerializeField] private float crawlSpeed = 1f;
 
     [Header("Mouse settings")]
-    [SerializeField] private float mouseSensitivity = 3f;
-    [SerializeField] private bool invertXAxis = false;
+    [SerializeField] private int clampAngle = 85;
+    [SerializeField] private bool lockCursor;
+    [SerializeField] private bool invertYAxis = false;
 
-    [Header("Camera Rotation")]
-    [SerializeField] private float clampRotation = 80f;
+    [SerializeField] private Vector2 sensitivity = new Vector2(2, 2);
+    [SerializeField] private Vector2 smoothing = new Vector2(1, 1);
+    [SerializeField] private Vector2 targetDirection;
+    [SerializeField] private Vector2 targetCharacterDirection;
 
     private FpsAnimationController fpsAnimationController;
     private FpsControllerInput fpsControllerInput;
@@ -27,11 +30,18 @@ public class FpsController : MonoBehaviour
     private float currentSpeed;
     private MovementType moveState;
 
+    private Vector2 mouseAbsolute;
+    private Vector2 smoothMouse;
+
     private void Start()
     {
         fpsAnimationController = GetComponent<FpsAnimationController>();
         fpsControllerInput = GetComponent<FpsControllerInput>();
         rBody = GetComponent<Rigidbody>();
+
+        // Set target direction to the camera's initial orientation.
+        targetDirection = cam.transform.localRotation.eulerAngles;
+        targetCharacterDirection = transform.localRotation.eulerAngles;
 
         // Set the initial movement type
         moveState = MovementType.Walk;
@@ -49,7 +59,10 @@ public class FpsController : MonoBehaviour
 
         // Update the speed based on the current movement type
         currentSpeed = moveState == MovementType.Walk ? walkSpeed : crawlSpeed;
+    }
 
+    private void LateUpdate()
+    {
         LookArround();
     }
 
@@ -71,24 +84,50 @@ public class FpsController : MonoBehaviour
 
     private void LookArround()
     {
+        // Ensure cam follows head bone position
         cam.position = headPosition.position;
 
-        if (invertXAxis)
+        // Ensure the cursor is always locked when set
+        if (lockCursor)
         {
-            mouseX += fpsControllerInput.MouseAxis().y;
-            print(mouseX);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
+        // Allow the script to clamp based on a desired target value.
+        var targetOrientation = Quaternion.Euler(targetDirection);
+        var targetCharacterOrientation = Quaternion.Euler(targetCharacterDirection);
+
+        // Get raw mouse input for a cleaner reading on more sensitive mice.
+        var mouseDelta = fpsControllerInput.MouseAxis();
+
+        // Scale input against the sensitivity setting and multiply that against the smoothing value.
+        mouseDelta = Vector2.Scale(mouseDelta, new Vector2(sensitivity.x * smoothing.x, sensitivity.y * smoothing.y));
+
+        // Interpolate mouse movement over time to apply smoothing delta.
+        smoothMouse.x = Mathf.Lerp(smoothMouse.x, mouseDelta.x, 1f / smoothing.x);
+        smoothMouse.y = Mathf.Lerp(smoothMouse.y, mouseDelta.y, 1f / smoothing.y);
+
+        // Find the absolute mouse movement value from point zero.
+        mouseAbsolute += smoothMouse;
+
+        // Clamp and apply the global y value.
+        mouseAbsolute.y = Mathf.Clamp(mouseAbsolute.y, -clampAngle, clampAngle);
+
+        // Check if we should invert the Y axis
+        if (invertYAxis)
+        {
+            // Apply X rotation to the player
+            cam.transform.localRotation = Quaternion.AngleAxis(mouseAbsolute.y, targetOrientation * Vector3.right) * targetOrientation;
         }
         else
         {
-            mouseX -= fpsControllerInput.MouseAxis().y;
-            print(mouseX);
+            // Apply X rotation to the player
+            cam.transform.localRotation = Quaternion.AngleAxis(-mouseAbsolute.y, targetOrientation * Vector3.right) * targetOrientation;
         }
-
-        cam.localRotation = Quaternion.Euler(
-            Mathf.Clamp(mouseX * mouseSensitivity, -clampRotation, clampRotation), 
-            0, 
-            0);
-
-        transform.Rotate(transform.up, fpsControllerInput.MouseAxis().x * mouseSensitivity);
+        
+        // Apply Y rotation to the player
+        var yRotation = Quaternion.AngleAxis(mouseAbsolute.x, Vector3.up);
+        transform.localRotation = yRotation * targetCharacterOrientation;
     }
 }

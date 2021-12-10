@@ -14,9 +14,9 @@ public class FpsControllerInput : MonoBehaviour
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
-        moveAction = playerInput.actions["Move"];
+        moveAction = playerInput.actions["Movement"];
         lookAction = playerInput.actions["Look"];
-        changeMoveTypeAction = playerInput.actions["ChangeMoveType"];
+        changeMoveTypeAction = playerInput.actions["ChangeMovementType"];
     }
 
     public Vector2 MoveAxis() => moveAction.ReadValue<Vector2>().normalized;
