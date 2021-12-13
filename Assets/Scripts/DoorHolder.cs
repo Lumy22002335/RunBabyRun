@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorHolder : Interactible
+public class DoorHolder : Interactable
 {
+    [SerializeField] private string description;
+    public override string Description => description;
+
     int interact = Animator.StringToHash("Interact");
 
     public bool Holding { get; private set; }
