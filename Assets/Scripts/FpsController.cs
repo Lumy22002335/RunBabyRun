@@ -1,7 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(FpsControllerInput))]
+[RequireComponent(typeof(FpsAnimationController))]
 public class FpsController : MonoBehaviour
 {
     [Header("Camera References")]
