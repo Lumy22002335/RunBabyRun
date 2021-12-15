@@ -6,7 +6,16 @@ public class PillowThrows : Interactable
 {
     [SerializeField] private FpsController fpsController;
 
-    [SerializeField] private int numPillowsThrown;
+    [SerializeField] private PlayerInventory inventory;
+
+    [SerializeField] private GameObject[] pillows;
+
+    private int numPillowsThrown;
+
+    private void Start() 
+    {
+        numPillowsThrown = 0;
+    }
 
     public override string Description 
     { 
@@ -27,7 +36,19 @@ public class PillowThrows : Interactable
     {
         if (numPillowsThrown < 6)
         {
-            
+            if (inventory.GetFromInventory ("Pillow"))
+            {
+                numPillowsThrown++;
+
+                for (int i = 0; i < pillows.Length; i++)
+                {
+                    if (!pillows[i].activeSelf)
+                    {
+                        pillows[i].SetActive(true);
+                        break;
+                    }
+                }
+            }
         }
         else
         {

@@ -8,6 +8,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private TextMeshProUGUI interactionText;
 
     private FpsControllerInput fpsControllerInput;
+    private PlayerInventory playerInventory;
     private Camera cam;
 
     private bool successfullHit;
@@ -16,6 +17,7 @@ public class PlayerInteraction : MonoBehaviour
     private void Start()
     {
         fpsControllerInput = GetComponent<FpsControllerInput>();
+        playerInventory = GetComponent<PlayerInventory>();
         cam = Camera.main;
     }
 
@@ -50,12 +52,30 @@ public class PlayerInteraction : MonoBehaviour
 
     private void HandleInteraction(Interactable interactable)
     {
-        interactionText.text = interactable.Description;
+        if (((interactable is IPickable) && !playerInventory.IsFull) || 
+            !(interactable is IPickable))
+        {
+            interactionText.text = interactable.Description;
+        }
+        else
+        {
+            interactionText.text = "Inventory is Full";
+        }
+
         successfullHit = true;
 
         if (fpsControllerInput.PlayerInteract())
         {
-            interactable.Interact();
+            if (((interactable is IPickable) && !playerInventory.IsFull) || 
+            !(interactable is IPickable))
+            {
+                interactable.Interact();
+            }
+
+            if (interactable is IPickable)
+            {
+                playerInventory.AddToInventory ((interactable as IPickable));
+            }
         }
     }
 }
