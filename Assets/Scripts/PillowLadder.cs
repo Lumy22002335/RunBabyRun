@@ -38,6 +38,7 @@ public class PillowLadder : Interactable
             } 
             else
             {
+                pillowsReference[numPillowsThrown - 1].SetActive(false);
                 pillowsReference[numPillowsThrown].SetActive(true);
             }
         }

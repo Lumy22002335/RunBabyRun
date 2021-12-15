@@ -19,7 +19,7 @@ public class PlayerInventory : MonoBehaviour
     private void Start() 
     {
         fpsControllerInput = GetComponent<FpsControllerInput> ();
-        slots = new IPickable[3];
+        slots = new IPickable[4];
         selectedIndex = 0;
     }
 
