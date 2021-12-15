@@ -6,6 +6,7 @@ public class BedDoor : MonoBehaviour
 {
     [SerializeField] private DoorHolder holderOne;
     [SerializeField] private DoorHolder holderTwo;
+    [SerializeField] private GameObject pillowThrows;
 
     int drop;
     
@@ -31,5 +32,6 @@ public class BedDoor : MonoBehaviour
         } while (holderOne.Holding || holderTwo.Holding);
 
         animator.SetTrigger(drop);
+        pillowThrows.SetActive(true);
     }
 }

@@ -36,6 +36,30 @@
                     "expectedControlType": "Button",
                     "processors": "ScaleVector2(x=0.1,y=0.1)",
                     "interactions": ""
+                },
+                {
+                    "name": "SelectItem1",
+                    "type": "Button",
+                    "id": "e5d75936-e94f-4414-8785-d098b88816d8",
+                    "expectedControlType": "Button",
+                    "processors": "ScaleVector2(x=0.1,y=0.1)",
+                    "interactions": ""
+                },
+                {
+                    "name": "SelectItem2",
+                    "type": "Button",
+                    "id": "01fb731f-a055-473f-9b5a-862343f5925a",
+                    "expectedControlType": "Button",
+                    "processors": "ScaleVector2(x=0.1,y=0.1)",
+                    "interactions": ""
+                },
+                {
+                    "name": "SelectItem3",
+                    "type": "Button",
+                    "id": "584ce924-4dc5-4af6-8926-8cdcd0a5b12c",
+                    "expectedControlType": "Button",
+                    "processors": "ScaleVector2(x=0.1,y=0.1)",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -146,6 +170,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "62b97a6a-3b44-40bf-8d00-734b40de54db",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectItem1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cc9b728b-05aa-40fe-a212-90a68d8d28e8",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectItem2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5fe62b21-767e-4342-a5d8-a162f014f37b",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectItem3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
