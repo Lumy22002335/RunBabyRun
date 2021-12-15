@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 1a5387aba61a2014389d3c0a58339bdf
+guid: 71428b2571cf0cc428fe3845ef03a439
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: PillowLightBlue_Mat_2
-    second: {fileID: 2100000, guid: fbef5a60030ea294b95bed3d7d9b1983, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -39,7 +34,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.5
+    globalScale: 48
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -90,7 +85,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.5
+    globalScale: 0.48
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

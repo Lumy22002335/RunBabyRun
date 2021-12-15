@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class PillowThrows : Interactable
 {
-    [SerializeField] private FpsController fpsController;
-
     [SerializeField] private PlayerInventory inventory;
 
     [SerializeField] private GameObject[] pillows;
+
+    [SerializeField] private GameObject climbPoint;
+
+    public override string Description => "Press [E] to Throw Pillow";
+
+    
 
     private int numPillowsThrown;
 
@@ -17,26 +21,11 @@ public class PillowThrows : Interactable
         numPillowsThrown = 0;
     }
 
-    public override string Description 
-    { 
-        get
-        {
-            if (numPillowsThrown < 6)
-            {
-                return "Press [E] to Throw Pillow";
-            }
-            else
-            {
-                return "Press [E] to Climb";
-            }
-        }
-    }
-
     public override void Interact()
     {
         if (numPillowsThrown < 6)
         {
-            if (inventory.GetFromInventory ("Pillow"))
+            if (inventory.GetFromInventory("Pillow"))
             {
                 numPillowsThrown++;
 
@@ -49,10 +38,12 @@ public class PillowThrows : Interactable
                     }
                 }
             }
-        }
-        else
-        {
-            fpsController.PlayerClimb();
+
+            if (numPillowsThrown >= 6)
+            {
+                climbPoint.SetActive(true);
+                gameObject.SetActive(false);
+            }
         }
     }
 }
