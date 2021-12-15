@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FpsAnimationController : MonoBehaviour
 {
+    [SerializeField] private Transform lookTarget;
+
     // Animator Hashes
     int xMove = Animator.StringToHash("XMove");
     int yMove = Animator.StringToHash("YMove");
@@ -19,6 +21,12 @@ public class FpsAnimationController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    private void OnAnimatorIK(int layerIndex)
+    {
+        animator.SetLookAtWeight(0.5f);
+        animator.SetLookAtPosition(lookTarget.position);
+    }
+
     public void UpdateMoveAnimation(Vector2 movement)
     {
         animator.SetBool(isMoving, (movement.x != 0 || movement.y != 0));
@@ -31,5 +39,15 @@ public class FpsAnimationController : MonoBehaviour
         animator.SetBool(isCrawling, movementType == MovementType.Crawl);
         animator.SetBool(isWalking, movementType == MovementType.Walk);
         animator.SetTrigger(changeStance);
+    }
+
+    public void Climb()
+    {
+        animator.SetTrigger("Climb");
+    }
+
+    public void SetRootMotion(int root)
+    {
+        animator.applyRootMotion = root == 1;
     }
 }

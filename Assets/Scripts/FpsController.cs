@@ -9,6 +9,9 @@ public class FpsController : MonoBehaviour
     [SerializeField] private Transform headPosition;
     [SerializeField] private Transform cam;
 
+    [Header("Player Climb end point")]
+    [SerializeField] private Transform climbTP;
+
     [Header("Player Move Speed")]
     [SerializeField] private float walkSpeed = 1.5f;
     [SerializeField] private float crawlSpeed = 1f;
@@ -95,6 +98,7 @@ public class FpsController : MonoBehaviour
             Cursor.visible = false;
         }
 
+
         // Allow the script to clamp based on a desired target value.
         var targetOrientation = Quaternion.Euler(targetDirection);
         var targetCharacterOrientation = Quaternion.Euler(targetCharacterDirection);
@@ -130,5 +134,15 @@ public class FpsController : MonoBehaviour
         // Apply Y rotation to the player
         var yRotation = Quaternion.AngleAxis(mouseAbsolute.x, Vector3.up);
         transform.localRotation = yRotation * targetCharacterOrientation;
+    }
+
+    public void PlayerClimb()
+    {
+        fpsAnimationController.Climb();
+    }
+
+    public void ClimbFinish()
+    {
+        transform.position = climbTP.position;
     }
 }

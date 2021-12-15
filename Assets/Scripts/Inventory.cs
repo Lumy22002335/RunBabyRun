@@ -8,7 +8,7 @@ public class Inventory : MonoBehaviour
 
     public GameObject[] slots;
 
-    // public InventoryObject inventory;
+    //public InventoryObject inventory;
 
     // Esta parte eu não sei como queres fazer a interação entre o player e o objecto, por isso deixo como está
     // e só tens que mudar o tipo da função, porque o corpo dela funciona igual.
