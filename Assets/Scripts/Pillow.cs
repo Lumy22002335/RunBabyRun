@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Pillow : Interactable, IPickable
 {
-    [SerializeField] private string name;
-    public string Name => name;
+    [SerializeField] private string pickableName;
+    public string Name => pickableName;
 
     [SerializeField] private Sprite icon;
     public Sprite Icon => icon;
