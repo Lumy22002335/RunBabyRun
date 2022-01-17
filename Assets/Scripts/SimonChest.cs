@@ -24,15 +24,19 @@ public class SimonChest : MonoBehaviour
         switch(ButtonColor)
         {
             case "Red":
+                animator.SetTrigger("RedButtonPress");
                 currentSequence += 1;
                 break;
             case "Green":
+                animator.SetTrigger("GreenButtonPress");
                 currentSequence += 2;
                 break; 
             case "Yellow":
+                animator.SetTrigger("YellowButtonPress");
                 currentSequence += 3;
                 break; 
             case "Orange":
+                animator.SetTrigger("OrangeButtonPress");
                 currentSequence += 4;
                 break;
         }
