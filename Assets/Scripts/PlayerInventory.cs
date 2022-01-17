@@ -91,4 +91,16 @@ public class PlayerInventory : MonoBehaviour
 
         return false;
     }
+
+    public string InventoryItem (string name)
+    {
+        if (slots[selectedIndex] != null && slots[selectedIndex].Name == name)
+        {
+            slots[selectedIndex] = null;
+            icons[selectedIndex].sprite = null;
+            return (name);
+        }
+
+        return ("None");
+    }
 }
