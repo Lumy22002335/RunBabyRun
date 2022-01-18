@@ -52,6 +52,9 @@ public class PlayerInventory : MonoBehaviour
 
         selected[2].enabled = fpsControllerInput.SelectItem3();
         selectedIndex = selected[2].enabled ? 2 : selectedIndex;
+
+        selected[3].enabled = fpsControllerInput.SelectItem4();
+        selectedIndex = selected[3].enabled ? 3 : selectedIndex;
     }
 
     public void AddToInventory (IPickable pickable)

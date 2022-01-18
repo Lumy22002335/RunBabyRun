@@ -13,6 +13,7 @@ public class FpsControllerInput : MonoBehaviour
     private InputAction selectItem1;
     private InputAction selectItem2;
     private InputAction selectItem3;
+    private InputAction selectItem4;
     
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class FpsControllerInput : MonoBehaviour
         selectItem1 = playerInput.actions["SelectItem1"];
         selectItem2 = playerInput.actions["SelectItem2"];
         selectItem3 = playerInput.actions["SelectItem3"];
+        selectItem4 = playerInput.actions["SelectItem4"];
     }
     
     public Vector2 MoveAxis() => moveAction.ReadValue<Vector2>().normalized;
@@ -40,6 +42,8 @@ public class FpsControllerInput : MonoBehaviour
 
     public bool SelectItem3() => selectItem3.triggered;
 
+    public bool SelectItem4() => selectItem4.triggered;
+
     public bool SelectItem() => 
-        selectItem1.triggered || selectItem2.triggered || selectItem3.triggered;
+        selectItem1.triggered || selectItem2.triggered || selectItem3.triggered || selectItem4.triggered;
 }

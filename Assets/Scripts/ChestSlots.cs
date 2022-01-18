@@ -8,33 +8,27 @@ public class ChestSlots : Interactable
 
     public override string Description => "Place Cube";
 
-    [SerializeField] private GameObject[] slot;
-
     private Vector3 cubePos;
 
     private void Start (){
 
         if (this.gameObject.name == "Slot1")
         {
-            this.gameObject.transform.localPosition = new Vector3 (0, 0, 0);
             cubePos = this.gameObject.transform.position;
         }
 
         else if (this.gameObject.name == "Slot2")
         {
-            this.gameObject.transform.localPosition = new Vector3 (0, 0, +0.1f);
             cubePos = this.gameObject.transform.position;
         }
 
         else if (this.gameObject.name == "Slot3")
         {
-            this.gameObject.transform.localPosition = new Vector3 (0, 0, +0.2f);
             cubePos = this.gameObject.transform.position;
         }
 
         else if (this.gameObject.name == "Slot4")
         {
-            this.gameObject.transform.localPosition = new Vector3 (0, 0, +0.3f);
             cubePos = this.gameObject.transform.position;
         }
     }
@@ -65,7 +59,7 @@ public class ChestSlots : Interactable
 
         else if (inventory.InventoryItem("Square Cube") == "Square Cube")
         {
-            Instantiate (GameObject.Find ("SquareCube"), cubePos, Quaternion.identity);
+            Instantiate (GameObject.Find ("CubeSquare"), cubePos, Quaternion.identity);
 
             this.gameObject.tag = "Square";
         }

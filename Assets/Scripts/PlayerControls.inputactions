@@ -60,6 +60,14 @@
                     "expectedControlType": "Button",
                     "processors": "ScaleVector2(x=0.1,y=0.1)",
                     "interactions": ""
+                },
+                {
+                    "name": "SelectItem4",
+                    "type": "Button",
+                    "id": "b37cdd87-c0ab-44d8-a616-e601e0dc1ef3",
+                    "expectedControlType": "Button",
+                    "processors": "ScaleVector2(x=0.1,y=0.1)",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -203,6 +211,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "SelectItem3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "53fb00ff-7a5c-4ea1-8f74-d170a4d3a0f8",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectItem4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
