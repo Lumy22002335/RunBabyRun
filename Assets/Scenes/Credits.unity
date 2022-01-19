@@ -316,7 +316,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Mom ( Come here honey ) '
+  m_text: Mom " Come here honey "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -436,12 +436,12 @@ PlayableDirector:
     value: {fileID: 212396354}
   - key: {fileID: -6260572473926602110, guid: 4e81770f080e363438bb3b55c8fcd288, type: 2}
     value: {fileID: 0}
-  - key: {fileID: -3914874118816261111, guid: 4e81770f080e363438bb3b55c8fcd288, type: 2}
-    value: {fileID: 1131623914}
   - key: {fileID: 4088552270322836805, guid: 4e81770f080e363438bb3b55c8fcd288, type: 2}
     value: {fileID: 0}
   - key: {fileID: -8374444582514034, guid: 4e81770f080e363438bb3b55c8fcd288, type: 2}
     value: {fileID: 479629872}
+  - key: {fileID: 6390154319889508787, guid: 4e81770f080e363438bb3b55c8fcd288, type: 2}
+    value: {fileID: 1131623914}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &403885816
@@ -780,7 +780,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1131623915
 RectTransform:
   m_ObjectHideFlags: 0
@@ -797,8 +797,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -1290}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 67.7561, y: -1345}
+  m_SizeDelta: {x: 135.5122, y: 423.4746}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1131623916
 MonoBehaviour:
@@ -820,7 +820,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Diogo Ferreira a22001907\nLuminita Postoronca\nJos\xE9 Miguel Pires a21701444\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThanks
+  m_text: "Diogo Ferreira a22001907\nLuminita Postoronca a22002335\nJos\xE9 Miguel
+    Pires a21701444\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThanks
     for playing "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -908,7 +909,7 @@ Animator:
   m_GameObject: {fileID: 1131623914}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b88f7cf0b8ab33d49b7c2bf5f116ea43, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3ebc05861164b7645be158aabc36e80d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -974,7 +975,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mom ( How did you get out of your room ? )
+  m_text: Mom " How did you get out of your room ? "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
