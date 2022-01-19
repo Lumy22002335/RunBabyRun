@@ -6,13 +6,16 @@ public class Chest : MonoBehaviour
 {
     [SerializeField] private GameObject[] cubes;
     [SerializeField] private GameObject[] slots;
-    [SerializeField] private bool Opened = false;
+
+    private Animator animator;
 
     private int numSlots;
 
     private void Start ()
     {
-        numSlots = this.gameObject.transform.childCount;
+        animator = GetComponent<Animator>();
+
+        numSlots = slots.Length;
     }
 
     private void Update ()
@@ -29,8 +32,7 @@ public class Chest : MonoBehaviour
 
         if (combinationCheck == numSlots)
         {
-            Opened = true;
-            // Add here trigger to open the chest;
+            animator.SetTrigger("Open");
         }
     }
 }

@@ -23,13 +23,19 @@ public class PlayerInventory : MonoBehaviour
         selectedIndex = 0;
     }
 
+    /// <summary>
+    /// Runs once per frame
+    /// </summary>
     private void Update() 
     {
+        // If there's a new select input
         if (fpsControllerInput.SelectItem())
         {
+            // Update the selected slot
             UpdateSelectedItem();
         }
 
+        // Checks if the inventory is full
         for (int i = 0; i < slots.Length; i++)
         {
             IsFull = true;
@@ -42,21 +48,26 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Update the selected inventory slot
+    /// </summary>
     private void UpdateSelectedItem ()
     {
         selected[0].enabled = fpsControllerInput.SelectItem1();
-        selectedIndex = selected[0].enabled ? 0 : selectedIndex;
-
         selected[1].enabled = fpsControllerInput.SelectItem2();
-        selectedIndex = selected[1].enabled ? 1 : selectedIndex;
-
         selected[2].enabled = fpsControllerInput.SelectItem3();
-        selectedIndex = selected[2].enabled ? 2 : selectedIndex;
-
         selected[3].enabled = fpsControllerInput.SelectItem4();
-        selectedIndex = selected[3].enabled ? 3 : selectedIndex;
+
+        for (int i = 0; i < 4; i++)
+        {
+            selectedIndex = selected[i].enabled ? i : selectedIndex;
+        }
     }
 
+    /// <summary>
+    /// Adds and object to the inventory
+    /// </summary>
+    /// <param name="pickable">The object must be a pickable</param>
     public void AddToInventory (IPickable pickable)
     {
         for (int i = 0; i < slots.Length; i++)
@@ -70,6 +81,11 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Gets and object from the inventory
+    /// </summary>
+    /// <param name="name">Name of the object</param>
+    /// <returns>If we got the object</returns>
     public bool GetFromInventory (string name)
     {
         if (slots[selectedIndex] != null && slots[selectedIndex].Name == name)
@@ -79,31 +95,27 @@ public class PlayerInventory : MonoBehaviour
             return true;
         }
 
+        return false;
+    }
+
+    /// <summary>
+    /// Checks if a certain object is in the Inventory
+    /// </summary>
+    /// <param name="name">Name of the Object</param>
+    /// <returns>If the player has the object</returns>
+    public bool InventoryItem(string name)
+    {
         for (int i = 0; i < slots.Length; i++)
         {
             if (slots[i] != null)
             {
                 if (slots[i].Name == name)
                 {
-                    slots[i] = null;
-                    icons[i].sprite = null;
                     return true;
                 }
             }
         }
 
         return false;
-    }
-
-    public string InventoryItem (string name)
-    {
-        if (slots[selectedIndex] != null && slots[selectedIndex].Name == name)
-        {
-            slots[selectedIndex] = null;
-            icons[selectedIndex].sprite = null;
-            return (name);
-        }
-
-        return ("None");
     }
 }

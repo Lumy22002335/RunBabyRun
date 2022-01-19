@@ -1,65 +1,53 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ChestSlots : Interactable
 {
     [SerializeField] private PlayerInventory inventory;
+    [SerializeField] private Transform spawnCube;
+    [SerializeField] private string myCubeName;
+    [SerializeField] private GameObject myLight;
 
     public override string Description => "Place Cube";
 
-    private Vector3 cubePos;
-
-    private void Start (){
-
-        if (this.gameObject.name == "Slot1")
+    private void Update()
+    {
+        if (inventory.InventoryItem(myCubeName))
         {
-            cubePos = this.gameObject.transform.position;
+            myLight.SetActive(true);
         }
-
-        else if (this.gameObject.name == "Slot2")
+        else
         {
-            cubePos = this.gameObject.transform.position;
-        }
-
-        else if (this.gameObject.name == "Slot3")
-        {
-            cubePos = this.gameObject.transform.position;
-        }
-
-        else if (this.gameObject.name == "Slot4")
-        {
-            cubePos = this.gameObject.transform.position;
+            myLight.SetActive(false);
         }
     }
 
     public override void Interact()
     {
 
-        if (inventory.InventoryItem("Star Cube") == "Star Cube")
+        if (inventory.GetFromInventory("Star Cube"))
         {
-            Instantiate (GameObject.Find ("CubeStart"), cubePos, Quaternion.identity);
+            Instantiate(Resources.Load("CubeStar"), spawnCube.position, Quaternion.identity);
 
             this.gameObject.tag = "Star";
         }
 
-        else if (inventory.InventoryItem("Triangle Cube") == "Triangle Cube")
+        else if (inventory.GetFromInventory("Triangle Cube"))
         {
-            Instantiate (GameObject.Find ("CubeTriangle"), cubePos, Quaternion.identity);
+            Instantiate(Resources.Load("CubeTriangle"), spawnCube.position, Quaternion.identity);
 
             this.gameObject.tag = "Triangle";
         }
 
-        else if (inventory.InventoryItem("Circle Cube") == "Circle Cube")
+        else if (inventory.GetFromInventory("Circle Cube"))
         {
-            Instantiate (GameObject.Find ("CubeCircle"), cubePos, Quaternion.identity);
+            Instantiate(Resources.Load("CubeCircle"), spawnCube.position, Quaternion.identity);
 
             this.gameObject.tag = "Circle";
         }
 
-        else if (inventory.InventoryItem("Square Cube") == "Square Cube")
+        else if (inventory.GetFromInventory("Square Cube"))
         {
-            Instantiate (GameObject.Find ("CubeSquare"), cubePos, Quaternion.identity);
+            Instantiate(Resources.Load("CubeSquare"), spawnCube.position, Quaternion.identity);
 
             this.gameObject.tag = "Square";
         }
