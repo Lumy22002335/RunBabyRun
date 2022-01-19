@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SimonChest : MonoBehaviour
 {
-    [SerializeField]
     private string correctSequence, currentSequence;
     Animator animator;
 
@@ -23,20 +22,20 @@ public class SimonChest : MonoBehaviour
     {
         switch(ButtonColor)
         {
-            case "Red":
-                animator.SetTrigger("RedButtonPress");
-                currentSequence += 1;
-                break;
-            case "Green":
-                animator.SetTrigger("GreenButtonPress");
-                currentSequence += 2;
-                break; 
             case "Yellow":
                 animator.SetTrigger("YellowButtonPress");
+                currentSequence += 1;
+                break;
+            case "Blue":
+                animator.SetTrigger("BlueButtonPress");
+                currentSequence += 2;
+                break; 
+            case "Green":
+                animator.SetTrigger("GreenButtonPress");
                 currentSequence += 3;
                 break; 
-            case "Orange":
-                animator.SetTrigger("OrangeButtonPress");
+            case "Pink":
+                animator.SetTrigger("PinkButtonPress");
                 currentSequence += 4;
                 break;
         }
