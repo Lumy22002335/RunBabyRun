@@ -7,6 +7,9 @@ public class ChestSlots : Interactable
     [SerializeField] private string myCubeName;
     [SerializeField] private GameObject myLight;
 
+    [SerializeField] private bool standingOnly;
+    public override bool StandingOnly => standingOnly;
+
     public override string Description => "Place Cube";
 
     private void Update()

@@ -33,6 +33,7 @@ public class FpsController : MonoBehaviour
     private float mouseX;
     private float currentSpeed;
     private MovementType moveState;
+    public MovementType MoveState => moveState;
 
     private Vector2 mouseAbsolute;
     private Vector2 smoothMouse;

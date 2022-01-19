@@ -9,6 +9,9 @@ public class SimonButton : Interactable
 
     [SerializeField] private SimonChest chest;
 
+    [SerializeField] private bool standingOnly;
+    public override bool StandingOnly => standingOnly;
+
     public override string Description => "Press [E] to click button";
 
     public override void Interact ()
