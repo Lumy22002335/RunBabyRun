@@ -59,6 +59,8 @@ public class FpsController : MonoBehaviour
 
         // Set the initial movement type
         moveState = MovementType.Walk;
+
+        fpsAnimationController.UpdateMovementType(moveState);
     }
 
     /// <summary>
