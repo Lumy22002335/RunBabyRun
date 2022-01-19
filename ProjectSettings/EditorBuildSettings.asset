@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Room.unity
     guid: 47f11f4f58835734eac4fcb37d4ef72a
   - enabled: 1
-    path: Assets/Scenes/Color_Puzzle_Test.unity
-    guid: c8afab7ee275167438a790414ed9d2c9
+    path: Assets/Scenes/Credits.unity
+    guid: 3684fe8dab03b0b439d1917fc54f5f42
   m_configObjects: {}
