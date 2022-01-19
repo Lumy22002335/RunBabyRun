@@ -6979,6 +6979,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1 &969398472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 969398473}
+  - component: {fileID: 969398474}
+  m_Layer: 0
+  m_Name: CrawlCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &969398473
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969398472}
+  m_LocalRotation: {x: 0.7071057, y: -1.7053026e-13, z: -0.0000014329904, w: 0.7071079}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2043681844}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!136 &969398474
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969398472}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.15167738
+  m_Height: 0.8184304
+  m_Direction: 1
+  m_Center: {x: 4.7320407e-14, y: -0.011589408, z: -0.19778667}
 --- !u!1 &990361982
 GameObject:
   m_ObjectHideFlags: 0
@@ -7934,6 +7979,10 @@ PrefabInstance:
       propertyPath: climbTP
       value: 
       objectReference: {fileID: 246524301}
+    - target: {fileID: 5083099527683038382, guid: d7688683937b1aa4f8d5e6d067b5357d, type: 3}
+      propertyPath: crawlCollider
+      value: 
+      objectReference: {fileID: 969398472}
     - target: {fileID: 5083099527683038383, guid: d7688683937b1aa4f8d5e6d067b5357d, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
