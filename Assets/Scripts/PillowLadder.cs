@@ -8,6 +8,9 @@ public class PillowLadder : Interactable
     [SerializeField] private GameObject[] pillowsReference;
     [SerializeField] private PlayerInventory inventory;
 
+    [SerializeField] private bool standingOnly;
+    public override bool StandingOnly => standingOnly;
+
     public override string Description => "Place Pillow";
 
     private int numPillowsThrown;

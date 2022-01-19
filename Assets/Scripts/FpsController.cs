@@ -26,6 +26,9 @@ public class FpsController : MonoBehaviour
     [SerializeField] private Vector2 targetDirection;
     [SerializeField] private Vector2 targetCharacterDirection;
 
+    [Header("Crawl Collider")]
+    [SerializeField] private GameObject crawlCollider;
+
     private FpsAnimationController fpsAnimationController;
     private FpsControllerInput fpsControllerInput;
     private Rigidbody rBody;
@@ -33,6 +36,7 @@ public class FpsController : MonoBehaviour
     private float mouseX;
     private float currentSpeed;
     private MovementType moveState;
+    public MovementType MoveState => moveState;
 
     private Vector2 mouseAbsolute;
     private Vector2 smoothMouse;
@@ -57,6 +61,9 @@ public class FpsController : MonoBehaviour
         {
             moveState = moveState == MovementType.Walk ? 
                 MovementType.Crawl : MovementType.Walk;
+
+            crawlCollider.SetActive(moveState == MovementType.Crawl);
+            GetComponent<Collider>().enabled = (moveState == MovementType.Walk);
 
             fpsAnimationController.UpdateMovementType(moveState);
         }

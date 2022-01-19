@@ -11,6 +11,9 @@ public class DoorHolder : Interactable
 
     public bool Holding { get; private set; }
 
+    [SerializeField] private bool standingOnly;
+    public override bool StandingOnly => standingOnly;
+
     private void Start()
     {
         Holding = true;

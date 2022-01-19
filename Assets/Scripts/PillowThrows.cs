@@ -10,9 +10,10 @@ public class PillowThrows : Interactable
 
     [SerializeField] private GameObject climbPoint;
 
-    public override string Description => "Press [E] to Throw Pillow";
+    [SerializeField] private bool standingOnly;
+    public override bool StandingOnly => standingOnly;
 
-    
+    public override string Description => "Press [E] to Throw Pillow";
 
     private int numPillowsThrown;
 

@@ -8,6 +8,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private TextMeshProUGUI interactionText;
 
     private FpsControllerInput fpsControllerInput;
+    private FpsController fpsController;
     private PlayerInventory playerInventory;
     private Camera cam;
 
@@ -17,6 +18,7 @@ public class PlayerInteraction : MonoBehaviour
     private void Start()
     {
         fpsControllerInput = GetComponent<FpsControllerInput>();
+        fpsController = GetComponent<FpsController>();
         playerInventory = GetComponent<PlayerInventory>();
         cam = Camera.main;
     }
@@ -40,7 +42,11 @@ public class PlayerInteraction : MonoBehaviour
 
             if (hit.collider.TryGetComponent<Interactable>(out interactable))
             {
-                HandleInteraction(interactable);
+                if (!interactable.StandingOnly || 
+                    (interactable.StandingOnly && fpsController.MoveState == MovementType.Walk))
+                {
+                    HandleInteraction(interactable);
+                }
             }
         }
 

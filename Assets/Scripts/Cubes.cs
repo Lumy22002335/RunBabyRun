@@ -7,6 +7,8 @@ public class Cubes : Interactable, IPickable
     [SerializeField] private string pickableName;
     public string Name => pickableName;
 
+    public override bool StandingOnly => false;
+
     [SerializeField] private Sprite icon;
     public Sprite Icon => icon;
 
