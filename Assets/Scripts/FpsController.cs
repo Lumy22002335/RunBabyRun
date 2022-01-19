@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Responsible for controlling the player movement
+/// </summary>
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(FpsControllerInput))]
 [RequireComponent(typeof(FpsAnimationController))]
@@ -41,6 +44,9 @@ public class FpsController : MonoBehaviour
     private Vector2 mouseAbsolute;
     private Vector2 smoothMouse;
 
+    /// <summary>
+    /// Runs at the start
+    /// </summary>
     private void Start()
     {
         fpsAnimationController = GetComponent<FpsAnimationController>();
@@ -55,6 +61,9 @@ public class FpsController : MonoBehaviour
         moveState = MovementType.Walk;
     }
 
+    /// <summary>
+    /// Runs once per frame
+    /// </summary>
     private void Update()
     {
         if (fpsControllerInput.ChangeMovementType())
@@ -72,11 +81,17 @@ public class FpsController : MonoBehaviour
         currentSpeed = moveState == MovementType.Walk ? walkSpeed : crawlSpeed;
     }
 
+    /// <summary>
+    /// Runs at the end of every frame
+    /// </summary>
     private void LateUpdate()
     {
         LookArround();
     }
 
+    /// <summary>
+    /// Runs at every phisics update
+    /// </summary>
     private void FixedUpdate()
     {
         if (fpsControllerInput.MoveAxis().magnitude > 0)
@@ -93,6 +108,9 @@ public class FpsController : MonoBehaviour
         fpsAnimationController.UpdateMoveAnimation(fpsControllerInput.MoveAxis());
     }
 
+    /// <summary>
+    /// Allows the player to look arround with the mouse
+    /// </summary>
     private void LookArround()
     {
         // Ensure cam follows head bone position
@@ -143,11 +161,17 @@ public class FpsController : MonoBehaviour
         transform.localRotation = yRotation * targetCharacterOrientation;
     }
 
+    /// <summary>
+    /// Requests the climb animation
+    /// </summary>
     public void PlayerClimb()
     {
         fpsAnimationController.Climb();
     }
 
+    /// <summary>
+    /// Teleports the player to the top of the object he climbed
+    /// </summary>
     public void ClimbFinish()
     {
         transform.position = climbTP.position;

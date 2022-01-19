@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Handles the input of controls
+/// </summary>
 [RequireComponent(typeof(PlayerInput))]
 public class FpsControllerInput : MonoBehaviour
 {
