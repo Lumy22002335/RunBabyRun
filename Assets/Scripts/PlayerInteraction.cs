@@ -1,6 +1,9 @@
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// Responsible for handling all player interactions
+/// </summary>
 [RequireComponent(typeof(FpsControllerInput))]
 public class PlayerInteraction : MonoBehaviour
 {
@@ -29,6 +32,9 @@ public class PlayerInteraction : MonoBehaviour
         CheckForInteractable();
     }
 
+    /// <summary>
+    /// Ray cast to check for an interactible
+    /// </summary>
     private void CheckForInteractable()
     {
         Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0f));
@@ -40,11 +46,13 @@ public class PlayerInteraction : MonoBehaviour
         {
             Interactable interactable;
 
+            // If it hits an interactible
             if (hit.collider.TryGetComponent<Interactable>(out interactable))
             {
                 if (!interactable.StandingOnly || 
                     (interactable.StandingOnly && fpsController.MoveState == MovementType.Walk))
                 {
+                    // Handle the interaction
                     HandleInteraction(interactable);
                 }
             }
@@ -56,8 +64,13 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Handles the interaction between the player and the object
+    /// </summary>
+    /// <param name="interactable">The interactible object</param>
     private void HandleInteraction(Interactable interactable)
     {
+        // Check if the interactible is pickable and inventory is full
         if (((interactable is IPickable) && !playerInventory.IsFull) || 
             !(interactable is IPickable))
         {
@@ -65,18 +78,22 @@ public class PlayerInteraction : MonoBehaviour
         }
         else
         {
+            // If so display a warning for a full inventory
             interactionText.text = "Inventory is Full";
         }
 
         successfullHit = true;
 
+        // Check if the player pressed the interaction key
         if (fpsControllerInput.PlayerInteract())
         {
             if (((interactable is IPickable) && !playerInventory.IsFull) || 
             !(interactable is IPickable))
             {
+                // If it's a pickable and the inventory is no full pick up the object
                 interactable.Interact();
             }
+
 
             if (interactable is IPickable)
             {

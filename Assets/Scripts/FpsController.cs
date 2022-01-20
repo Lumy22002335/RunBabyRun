@@ -176,6 +176,7 @@ public class FpsController : MonoBehaviour
     /// </summary>
     public void ClimbFinish()
     {
+        moveState = MovementType.Crawl;
         transform.position = climbTP.position;
     }
 }

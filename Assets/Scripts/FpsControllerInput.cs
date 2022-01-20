@@ -18,6 +18,9 @@ public class FpsControllerInput : MonoBehaviour
     private InputAction selectItem3;
     private InputAction selectItem4;
     
+    /// <summary>
+    /// Runs at the begginning
+    /// </summary>
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -31,10 +34,22 @@ public class FpsControllerInput : MonoBehaviour
         selectItem4 = playerInput.actions["SelectItem4"];
     }
     
+    /// <summary>
+    /// Gets the move axis for the player
+    /// </summary>
+    /// <returns>Normalized Vector 2 of the movement axis</returns>
     public Vector2 MoveAxis() => moveAction.ReadValue<Vector2>().normalized;
     
+    /// <summary>
+    /// Gets the mouse axis for the player
+    /// </summary>
+    /// <returns>A Vector 2 of the mouse axis</returns>
     public Vector2 MouseAxis() => lookAction.ReadValue<Vector2>();
 
+    /// <summary>
+    /// Gets the bool for the input of changing a movement type
+    /// </summary>
+    /// <returns>True or false if the action was triggered</returns>
     public bool ChangeMovementType() => changeMoveTypeAction.triggered;
 
     public bool PlayerInteract() => interactAction.triggered;

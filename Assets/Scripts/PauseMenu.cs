@@ -32,6 +32,8 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         fpsController.enabled = true;
         pauseMenuUI.SetActive(false);
         isPaused = false;
@@ -40,6 +42,8 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         fpsController.enabled = false;
         pauseMenuUI.SetActive(true);
         isPaused = true;
@@ -47,8 +51,10 @@ public class PauseMenu : MonoBehaviour
     }
 
     
-     public void Menu ()
+    public void Menu ()
     {
-         SceneManager.LoadScene("Start Menu", LoadSceneMode.Single);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        SceneManager.LoadScene("Start Menu", LoadSceneMode.Single);
     }
 }
